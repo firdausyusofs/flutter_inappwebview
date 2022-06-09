@@ -9,9 +9,18 @@ import Foundation
 import WebKit
 
 public class UserScript : WKUserScript {
+    private var _contentWorld: Any? = nil
     var groupName: String?
     @available(iOS 14.0, *)
-    lazy var contentWorld: WKContentWorld = WKContentWorld.page
+    var contentWorld: WKContentWorld? {
+        get {
+            return _contentWorld as? WKContentWorld
+        }
+        set {
+            _contentWorld = newValue
+        }
+    }
+//    lazy var contentWorld: WKContentWorld = WKContentWorld.page
     
     public override init(source: String, injectionTime: WKUserScriptInjectionTime, forMainFrameOnly: Bool) {
         super.init(source: source, injectionTime: injectionTime, forMainFrameOnly: forMainFrameOnly)
@@ -25,7 +34,7 @@ public class UserScript : WKUserScript {
     @available(iOS 14.0, *)
     public override init(source: String, injectionTime: WKUserScriptInjectionTime, forMainFrameOnly: Bool, in contentWorld: WKContentWorld) {
         super.init(source: source, injectionTime: injectionTime, forMainFrameOnly: forMainFrameOnly, in: contentWorld)
-        self.contentWorld = contentWorld
+        self.contentWorld = WKContentWorld.page
     }
 
     @available(iOS 14.0, *)

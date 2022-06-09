@@ -54,7 +54,7 @@ public class PluginScript : UserScript {
                 source: source ?? self.source,
                 injectionTime: injectionTime ?? self.injectionTime,
                 forMainFrameOnly: forMainFrameOnly ?? self.isForMainFrameOnly,
-                in: self.contentWorld,
+                in: self.contentWorld!,
                 requiredInAllContentWorlds: requiredInAllContentWorlds ?? self.requiredInAllContentWorlds,
                 messageHandlerNames: messageHandlerNames ?? self.messageHandlerNames
             )
@@ -82,7 +82,7 @@ public class PluginScript : UserScript {
             source: source ?? self.source,
             injectionTime: injectionTime ?? self.injectionTime,
             forMainFrameOnly: forMainFrameOnly ?? self.isForMainFrameOnly,
-            in: contentWorld ?? self.contentWorld,
+            in: (contentWorld ?? self.contentWorld)!,
             requiredInAllContentWorlds: requiredInAllContentWorlds ?? self.requiredInAllContentWorlds,
             messageHandlerNames: messageHandlerNames ?? self.messageHandlerNames
         )
